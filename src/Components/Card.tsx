@@ -19,13 +19,11 @@ const CardHeader = styled.div``;
 const CardHeading = styled.h2`
   font-size: 36px;
   font-weight: 300;
-  margin: 0;
+  margin: 0 0 8px 0;
 `;
 
-const CardSubHeading = styled.h5`
+const CardSubHeading = styled.span`
   font-size: 16px;
-  font-weight: 300;
-  margin: 10px 0 0 0;
 `;
 
 const CardBody = styled.div`
@@ -67,7 +65,7 @@ const CardBodyIcon = styled.img`
   margin-bottom: 30px;
 `;
 
-const CardBodyDescription = styled.h5`
+const CardBodyDescription = styled.span`
   font-size: 16px;
   font-weight: 300;
   margin: 0;
@@ -75,6 +73,7 @@ const CardBodyDescription = styled.h5`
 
 const CardBodyMinMax = styled.div`
   padding-top: 30px;
+  padding-right: 30px;
 `;
 
 const CardBodyMinMaxTemp = styled.h2`
@@ -106,24 +105,25 @@ const CardFooterTemp = styled.p`
 `;
 const CardFooterForecastDescription = styled.p``;
 
-const CardFooterHeading = styled.h4`
+const CardFooterHeading = styled.p`
   font-size: 16px;
   margin: 0 0 8px 0;
   text-transform: capitalize;
+  font-weight: 600;
 `;
 
 const CardFooterIcon = styled.img``;
 
 interface Props {
-  temp: String;
-  description: String;
-  icon: String;
+  temp: string;
+  description: string;
+  icon: string;
   date: string;
-  minTemp: String;
-  maxTemp: String;
-  forecastTemp: String;
-  forecastDescription: String;
-  forecastIcon: String;
+  minTemp: string;
+  maxTemp: string;
+  forecastTemp: string;
+  forecastDescription: string;
+  forecastIcon: string;
   forecastdate: string;
 }
 
@@ -148,7 +148,7 @@ const Card: React.FC<Props> = (props) => {
           </CardBodyTemp>
           <CardBodyContent>
             <CardBodyIcon
-              alt="weather icon"
+              alt={props.description}
               src={`http://${props.icon}`}
             ></CardBodyIcon>
             <CardBodyDescription>{props.description}</CardBodyDescription>
@@ -165,7 +165,7 @@ const Card: React.FC<Props> = (props) => {
           {props.forecastDescription}
         </CardFooterForecastDescription>
         <CardFooterIcon
-          alt="weather icon"
+          alt={props.forecastDescription}
           src={`http://${props.forecastIcon}`}
         ></CardFooterIcon>
       </CardFooter>
